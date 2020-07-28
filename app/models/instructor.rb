@@ -4,4 +4,7 @@ class Instructor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :introduction
+  has_many :genres
+  has_many :comments
+  has_many :booking
 end
