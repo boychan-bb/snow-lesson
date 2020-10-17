@@ -1,0 +1,8 @@
+<div class="col-md-6 col-md-offset-3 well">
+    
+    <h2>自己紹介を充実させて自分をアピールしよう！</h2>
+        <%= link_to "自己紹介文作成、編集", "/introduction/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
+        <%= link_to "ジャンル登録、追加", "/genre/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
+        <%= link_to "マイページ", "/instructors/#{current_instructor.id}", method: :get, class: "post btn btn-primary" %>
+        <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, class: "post btn btn-primary" %>
+</div>

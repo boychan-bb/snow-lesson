@@ -1,2 +1,5 @@
 class UserBookingsController < ApplicationController
+    
+    
+    
 end

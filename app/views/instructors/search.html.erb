@@ -1,0 +1,10 @@
+<% if @instructors.present? %>
+    <% @instructors.each do |instructor| %>
+        <p>インストラクター：</p><%= link_to "#{instructor.name}", "/" %></br>
+            <% if user_signed_in? && !instructor_signed_in? %>
+                <%= link_to "レッスンを申し込む", user_booking_path %>
+            <% end %>
+    <% end %>
+<% else %>
+    <p>検索結果がありません</p>
+<% end %>

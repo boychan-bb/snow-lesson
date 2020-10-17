@@ -1,0 +1,11 @@
+<h2 class = "text-center"><%= @instructor.name %>さんのマイページ</h2>
+
+<p class="text-center">自己紹介文：<%= @instructor.introduction.introduction %></p>
+<p class="text-center">ジャンル：
+    <% @instructor.genres.each do |instructor| %>
+       <%= instructor.genre %></p>
+    <% end %>
+   
+<%= @instructor.introduction.image %>
+
+<p class="text-center"><%= link_to "レッスン可能日設定", booking_new_path, method: :get %></p>

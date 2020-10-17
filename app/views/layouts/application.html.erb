@@ -4,55 +4,42 @@
     <title>SnowLesson</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
-    <header>
-      <div class="header-logo">
-        <a href="/">SnowLesson</a>
-      </div>
-      
-      <div class="header-list">
-        <ul>
-          <li><a href="/">TOP</a></li>
-          <li><a href="/about">SnowLessonとは？</a></li>
-          <li><a href="/guide">ご利用方法</a></li>
-          <li><input type="search" name="search" placeholder="キーワードを入力してね！"></li>
-          <li><input type="submit" name="submit" value="検索"></li>
-        </ul>
-      </div>
-      <div class="user_session">
-        <h2>レッスンを受けたい方はこちらから</h2>
-        <% if user_signed_in? %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "新規登録", new_user_registration_path, class: "post" %>
-          <%= link_to "ログイン", new_user_session_path, class: "post" %>
-        <% end %>
-      </div>
-      
-      <div class="instructor_session">
-        <h2>インストラクターの方はこちらから</h2>
-        <% if instructor_signed_in? %>
-          <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "新規登録", new_instructor_registration_path, method: :get %>
-          <%= link_to "ログイン", new_instructor_session_path, method: :get %>
-        <% end %>
-      </div>
-    </header>
-    <%= yield %>
+    <%= render "layouts/header" %>
     
-    <foooter>
-      <div class="footer-logo">
-        SnowLesson
+      <%= render "layouts/search" %>
+    
+        <div class="user_inst_nav">
+          <div class="container">
+            
+            <div class="row">
+                
+                  <% if instructor_signed_in? && !user_signed_in? %>
+                    <%= render "layouts/instructor_signed_in" %>     <!-- partialでリファクタリング -->
+                  <% elsif !instructor_signed_in? && !user_signed_in? %>
+                    <%= render "layouts/instructor_not_signed_in" %>
+                  <% end %>
+                
+                  <% if user_signed_in? && !instructor_signed_in? %>
+                    <%= render "layouts/user_signed_in" %>
+                  <% elsif !user_signed_in? && !instructor_signed_in? %>
+                    <%= render "layouts/user_not_signed_in" %>
+                  <% end %>
+              
+          </div>
+        </div>
       </div>
-      <div class="footer-list">
-        <li><a href="/">運営者</a></li>
-      </div>
-    </foooter>
+      
+    <div class="container">
+      <%= yield %>
+    </div>
+    
+    <%= render "layouts/footer" %>
+    
   </body>
 </html>

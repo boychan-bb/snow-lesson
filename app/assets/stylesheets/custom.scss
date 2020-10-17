@@ -1,0 +1,91 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+/*header*/
+
+#header-logo {
+      float: left;
+      margin-right: 10px;
+      font-size: 1.7em;
+      color: #fff;
+      letter-spacing: 2px;
+      padding-top: 9px;
+      font-weight: bold;
+}
+
+.user_inst_nav {
+    margin-top:50px;
+    padding-bottom:19px;
+    text-align:center;
+    h2 {
+        font-size:25px;
+    }
+}
+
+/* top-page */
+.top-page {
+    h2 {
+        padding-top:300px;
+        color:black;
+    }
+}
+.top-image {
+    height:500px;
+    background-image:url("https://media.istockphoto.com/photos/empty-ski-slope-picture-id1176739413?b=1&k=6&m=1176739413&s=170667a&w=0&h=IIM28KrOWqSlE90f9WiRJfZYN2OnN8glqt_-dCS3K4o=");
+    background-size:cover;
+}
+
+/* forms */
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+
+/*footer*/
+.copyright {
+    color:white;
+}
+
+footer {
+    margin-top:50px;
+}
+
+/*about*/
+.contents {
+    display:flex;
+}
+.content {
+    width:25%;
+    background:orange;
+    height:100px;
+    margin:10px;
+    text-align:center;
+    border:10px solid orange;
+    border-radius:300px;
+    p {
+        font-size:20px;
+        
+    }
+}

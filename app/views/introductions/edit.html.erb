@@ -1,0 +1,17 @@
+<h2 class="text-center">自己紹介文を作ろう！</h2>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(:introduction, url: "/introduction/#{current_instructor.id}", html: {method: "patch"}) do |f| %>     <!--強制的にHTTPメソッドをpatchにして更新-->
+        
+            <%= f.label :introduction %>
+            <%= f.text_field :introduction, :placeholder => "自己紹介文を入力",  class: "form-control" %>
+            
+            <%= f.label :image %>
+            <%= f.text_field :image, :placeholder => "あなたをアピールする写真を挿入", class: "form-control" %>
+            
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+            
+        <% end %>
+    </div>
+</div>

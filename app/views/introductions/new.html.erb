@@ -1,0 +1,10 @@
+<%= form_with model: @introduction, url: introduction_path do |form| %>
+    <h3>
+        自己紹介文を作成しよう！
+    </h3>
+    <%= @current_user %>
+    <%= form.text_area :introduction, placeholder: "自己紹介文入力" %>
+    <%= form.text_field :image, placeholder: "あなたをアピールする写真" %>
+    
+    <%= form.submit "送信" %>
+<% end %>

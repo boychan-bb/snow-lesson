@@ -66,3 +66,7 @@ gem 'sprockets', '3.7.2'
 gem 'hirb'
 gem 'hirb-unicode'
 gem 'devise'
+
+gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'ransack'   #検索機能gem

@@ -8,4 +8,6 @@ class Instructor < ApplicationRecord
   has_many :genres
   has_many :comments
   has_many :booking
+  
+  
 end

@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_02_051222) do
+ActiveRecord::Schema.define(version: 2020_10_17_000056) do
 
   create_table "bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "lesson_date"
     t.time "lesson_time"
     t.integer "fee"
     t.integer "how_many"
@@ -25,17 +24,20 @@ ActiveRecord::Schema.define(version: 2020_08_02_051222) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment"
-    t.integer "user_id"
-    t.integer "instructor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "instructor_id"
+    t.index ["instructor_id"], name: "index_comments_on_instructor_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "genre"
-    t.integer "instructor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "instructor_id"
+    t.index ["instructor_id"], name: "index_genres_on_instructor_id"
   end
 
   create_table "instructors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,11 +54,12 @@ ActiveRecord::Schema.define(version: 2020_08_02_051222) do
   end
 
   create_table "introductions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
     t.text "introduction"
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "instructor_id"
+    t.index ["instructor_id"], name: "index_introductions_on_instructor_id"
   end
 
   create_table "tops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,10 +68,12 @@ ActiveRecord::Schema.define(version: 2020_08_02_051222) do
   end
 
   create_table "user_bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "booking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_user_bookings_on_booking_id"
+    t.index ["user_id"], name: "index_user_bookings_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,4 +89,10 @@ ActiveRecord::Schema.define(version: 2020_08_02_051222) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "instructors"
+  add_foreign_key "comments", "users"
+  add_foreign_key "genres", "instructors"
+  add_foreign_key "introductions", "instructors"
+  add_foreign_key "user_bookings", "bookings"
+  add_foreign_key "user_bookings", "users"
 end
