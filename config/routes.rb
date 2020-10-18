@@ -28,8 +28,15 @@ Rails.application.routes.draw do
   get "/genre/search" => "genres#search"
   #ジャンル検索用のルーティング
   
+  #インストラクター用予約機能実装ルーティング
   get "/booking/new" => "bookings#new"    #インストラクター用の予約機能ルーティング
   post "/booking" => "bookings#create"    #インストラクター用にレッスン可能日生成ルーティング
+  get "/booking/:id" => "bookings#index"  #インストラクター用のレッスン申し込み状況確認ルーティング
+  get "/booking/show/:id" => "bookings#show"   #インストラクター用のレッスン申し込み状況詳細ページルーティング
+  # resources :bookings do
+  #   resources :user_bookings, only: [:show]
+  # end
+  #インストラクター用予約機能実装ルーティング
   
   #user側のレッスン申し込み日表示、予約機能ルーティング
   get "/user_booking/:id" => "user_bookings#index"  #user側のレッスン申し込み日表示

@@ -1,10 +1,13 @@
 class BookingsController < ApplicationController
     
     
-    # def index
-    #      @bookings = Booking.where(params[:id])      #findではなくwhereにしないと each文で取り出せない(配列にして渡す)
-    #      #binding.pry
-    # end
+    def index
+        @bookings = Booking.where(params[:id])      #findではなくwhereにしないと each文で取り出せない(配列にして渡す)
+    end
+    
+    def show
+        @bookings = UserBooking.where(booking_id: params[:id])
+    end
     
     def new
         @bookings = Booking.new

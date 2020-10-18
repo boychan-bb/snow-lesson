@@ -8,5 +8,5 @@
    
 <%= @instructor.introduction.image %>
 
-<p class="text-center"><%= link_to "レッスン可能日設定", booking_new_path, method: :get %></p>
-<p class="text-center"><%= link_to "レッスン申し込み状況確認", "/booking/#{@instructor.id}" %></p>
+<p class="text-center"><%= link_to "レッスン可能日設定", booking_new_path, method: :get, class: "btn btn-primary" %></p>
+<p class="text-center"><%= link_to "レッスン申し込み状況確認", "/booking/#{@instructor.id}", class: "btn btn-primary" %></p>
