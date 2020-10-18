@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h2 class="text-center">
+            予約する日程を選択してください
+        </h2>
+        <% day_count = 1 %>
+        <% @bookings.each do |booking| %>
+            <div class="well">
+                <h3>候補日<%= day_count %></h3>
+                <p>レッスン可能日：<%= booking.lesson_time %></p>
+                <p>一人あたりのレッスン料金：<%= booking.fee %>円</p>
+                <p>レッスンの最大人数：<%= booking.how_many %>人</p>
+                <% if booking.booking == 1 %>
+                    <p>ごめんなさい。この日は満員です</p>
+                <% else %>
+                    <%= link_to "候補日#{day_count}で申し込む", "/user_booking/#{booking.id}", method: :post, class: "btn btn-primary" %>
+                <% end %>
+                <% day_count += 1 %>
+            </div>
+        <% end %>
+    </div>
+</div>

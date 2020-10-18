@@ -1,6 +1,6 @@
 class InstructorsController < ApplicationController
     
-    before_action :move_to_root        #インストラクターマイページに遷移する前にmove_to_rootを実行
+    #before_action :move_to_root        #インストラクターマイページに遷移する前にmove_to_rootを実行
     
     # def search
     #     @instructors = Instructor.where("name LIKE(?)", "%#{params[:keyword]}%").limit(20)

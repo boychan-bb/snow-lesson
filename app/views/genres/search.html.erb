@@ -1,7 +1,10 @@
 <% if @genres.present? %>
     <% @genres.each do |genre| %>
         <p>インストラクター：</p><%= link_to "#{genre.genre}   #{genre.instructor.name}", "/" %></br>
-        <%= link_to "レッスンを申し込む", "#" %>
+            <% if user_signed_in? && !instructor_signed_in? %>
+                <%#= link_to "レッスンを申し込む", "/booking/#{genre.instructor_id}", method: :get %>
+                <%= link_to "レッスンを申し込む", "/user_booking/#{genre.instructor_id}", method: :get %>
+            <% end %>
     <% end %>
 <% else %>
     <p>検索結果がありません</p>

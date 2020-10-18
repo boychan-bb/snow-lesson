@@ -1,5 +1,11 @@
 class BookingsController < ApplicationController
     
+    
+    # def index
+    #      @bookings = Booking.where(params[:id])      #findではなくwhereにしないと each文で取り出せない(配列にして渡す)
+    #      #binding.pry
+    # end
+    
     def new
         @bookings = Booking.new
     end
@@ -7,7 +13,8 @@ class BookingsController < ApplicationController
     def create
         @bookings = Booking.new(booking_params)
         @bookings.instructor_id = current_instructor.id
-        @bookings.booking = 1
+        @bookings.booking = 0
+        @bookings.reserved_count = 0
         if @bookings.save!
             flash[:success] = "レッスン予定日設定完了しました"
             redirect_to "/"
