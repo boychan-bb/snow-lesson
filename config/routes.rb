@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   #インストラクター検索用ルーティング
   get "/instructors/search" => "instructors#search"
-  get "instructors/:id" => "instructors#show"
+  get "/instructors/:id" => "instructors#show"
   #インストラクター検索用ルーティング
   
   #静的page routes
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get "/booking/new" => "bookings#new"    #インストラクター用の予約機能ルーティング
   post "/booking" => "bookings#create"    #インストラクター用にレッスン可能日生成ルーティング
   get "/booking/:id" => "bookings#index"  #インストラクター用のレッスン申し込み状況確認ルーティング
-  get "/booking/show/:id" => "bookings#show"   #インストラクター用のレッスン申し込み状況詳細ページルーティング
+  get "/booking/show/:id" => "bookings#show"   #インストラクター用のレッスン申し込み状況詳細ページルーティング,bookingのidを受けとる
   # resources :bookings do
   #   resources :user_bookings, only: [:show]
   # end

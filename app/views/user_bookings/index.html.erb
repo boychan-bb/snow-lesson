@@ -4,10 +4,13 @@
             予約する日程を選択してください
         </h2>
         <% day_count = 1 %>
+        <%# if @bookingsがからのときは %>
+        <%#　候補日なし %>
         <% @bookings.each do |booking| %>
             <div class="well">
                 <h3>候補日<%= day_count %></h3>
                 <p>レッスン可能日：<%= booking.lesson_time %></p>
+                <p>レッスン時間：<%= booking.howlong %></p>
                 <p>一人あたりのレッスン料金：<%= booking.fee %>円</p>
                 <p>レッスンの最大人数：<%= booking.how_many %>人</p>
                 <% if booking.booking == 1 %>

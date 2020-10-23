@@ -1,17 +1,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <% day_count = 1 %>
+            <% lesson_count = 1 %>      <!--ローカル変数day_countでレッスン設定日のカウントする-->
                 <% @bookings.each do |booking| %>
                     <div class="well">
-                        <h3>設定日<%= day_count %></h3>
+                        <h3>あなたのレッスン設定日<%= lesson_count %></h3>
                         <p>レッスン日時：<%= booking.lesson_time %></p>
+                        <p>レッスン時間：<%= booking.howlong %>時間</p>
                         <p>レッスン最大人数：<%= booking.how_many %>人</p>
                         <p>レッスン料金：<%= booking.fee %>円</p>
                         <p>現在の申し込み人数：<%= booking.reserved_count %>人</p>
-                        <%= link_to "このレッスンの詳細", "/booking/show/#{booking.id}", class: "btn btn-primary" %>
+                        <%= link_to "このレッスンの詳細", "/booking/show/#{booking.id}", class: "btn btn-primary" %>     <!--booking.idを送って予約のidを送る-->
                     </div>
-                    <% day_count += 1 %>
+                    <% lesson_count += 1 %>     <!--lesson_count+1でレッスンの設定回数分を表示するようにする-->
                 <% end %>
         </div>
     </div>

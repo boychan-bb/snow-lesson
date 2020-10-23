@@ -1,10 +1,12 @@
-<% if @instructors.present? %>
-    <% @instructors.each do |instructor| %>
-        <p>インストラクター：</p><%= link_to "#{instructor.name}", "/" %></br>
-            <% if user_signed_in? && !instructor_signed_in? %>
-                <%= link_to "レッスンを申し込む", "/user_booking/#{instructor.id}", method: :get %>
-            <% end %>
+<div class="container">
+    <% if @instructors.present? %>
+        <% @instructors.each do |instructor| %>
+            <p>インストラクター：<%= link_to "#{instructor.name}", "/instructors/#{instructor.id}", method: :get %></p>
+                <% if user_signed_in? && !instructor_signed_in? %>
+                    <p><%= link_to "#{instructor.name}のレッスン一覧", "/user_booking/#{instructor.id}", class: "btn btn-primary", method: :get %></p>
+                <% end %>
+        <% end %>
+    <% else %>
+        <p>検索結果がありません</p>
     <% end %>
-<% else %>
-    <p>検索結果がありません</p>
-<% end %>
+</div>

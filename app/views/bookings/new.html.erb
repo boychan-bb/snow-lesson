@@ -8,13 +8,19 @@
             <%#= f.label :lesson_date , "レッスン可能日 (lesson_date)"%>
             <%#= f.date_select :lesson_date, class: "form-control" %>
             
-            <%= f.label :lesson_time %>
+            <%= f.label :lesson_time, "レッスン時間帯設定" %>
             <%= f.datetime_select :lesson_time, class: "form-control" %>
             
-            <%= f.label :how_many %>
+            <%= f.label :course, "コース設定" %>
+            <%= f.text_field :course, required: true, class: "form-control" %>
+            
+            <%= f.label :howlong, "レッスン時間" %>
+            <%= f.number_field :howlong, required: true, class: "form-control" %>
+            
+            <%= f.label :how_many, "レッスン可能人数設定" %>
             <%= f.number_field :how_many, min: 0, max: 20, required: true, class: "form-control" %>
             
-            <%= f.label :fee %>
+            <%= f.label :fee, "１人あたりのレッスン料金" %>
             <%= f.number_field :fee, required: true, class: "form-control" %> 
             
             <%= f.submit "登録する", class: "btn btn-primary" %>

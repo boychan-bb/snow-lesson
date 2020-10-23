@@ -9,9 +9,7 @@ class UserBookingsController < ApplicationController
         @bookings = Booking.find(params[:id])#ここにbookingsテーブルの処理を書くことにする。
         if @bookings.how_many > @bookings.reserved_count    #how_manyの方がreserved_countよりもまだ多い時
             @bookings.reserved_count += 1        #userが一人申し込んだわけなので、reserved_countは+1される
-        end
-        if @bookings.reserved_count == @bookings.how_many   #how_manyとreserved_countが一致した時
-            @bookings.booking = 1   #reserved_countとhow_manyが同一数になったとき、満員フラグ"1"を立てる
+            @bookings.booking = 1 if @bookings.reserved_count == @bookings.how_many   #how_manyとreserved_countが一致した時   #reserved_countとhow_manyが同一数になったとき、満員フラグ"1"を立てる
         end
         #binding.pry
         @bookings.save
