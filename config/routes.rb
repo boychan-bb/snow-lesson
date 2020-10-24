@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root "top#index"    #topページへのルートパス
   devise_for :users   #user用(お客様)用のログイン
   devise_for :instructors   #インストラクター用のログインパス
