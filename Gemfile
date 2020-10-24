@@ -67,6 +67,7 @@ gem 'hirb'
 gem 'hirb-unicode'
 gem 'devise'
 gem 'rails_admin', '~> 2.0.0.beta'
+gem 'cancancan'
 
 gem 'bootstrap-sass', '~> 3.3.7'
 
