@@ -7,7 +7,7 @@ class Instructor < ApplicationRecord
   has_one :introduction
   has_many :genres
   has_many :comments
-  has_many :booking
+  has_many :bookings
   
   
 end

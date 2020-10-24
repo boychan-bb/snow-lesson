@@ -2,8 +2,22 @@ class IntroductionsController < ApplicationController
   
   def new
     @introduction = Introduction.new#(introduction_params).save!
-    #@current_instructor = current_instructor
     #binding.pry
+  end
+  
+  def create
+    @introduction = Introduction.new(introduction_params)
+    #@current_instructor = current_instructor.id
+    #@introduction = @intro.build_introduction(introduction_params)
+    @introduction.instructor_id = current_instructor.id
+    
+    if @introduction.save!
+      flash[:success] = "登録完了しました"
+      redirect_to "/"
+    else
+      flash[:danger] = "登録に失敗しました"
+      render :new
+    end
   end
   
   def edit
@@ -20,21 +34,6 @@ class IntroductionsController < ApplicationController
       render "new"
     end
   end
-  
-  # def create
-  #   @introduction = Introduction.new(introduction_params)
-  #   #@current_instructor = current_instructor.id
-  #   #@introduction = @intro.build_introduction(introduction_params)
-  #   @introduction.instructor_id = current_instructor.id
-    
-  #   if @introduction.save!
-  #     flash[:success] = "登録完了しました"
-  #     redirect_to "/"
-  #   else
-  #     flash[:danger] = "登録に失敗しました"
-  #     render :new
-  #   end
-  # end
   
   private
   def introduction_params

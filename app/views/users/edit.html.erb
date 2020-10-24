@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(:user, url: "/users/#{current_user.id}", html: {method: "patch"}) do |f| %>
+        
+            <%= f.label :name %>
+            <%= f.text_field :name, required: true, class: "form-control" %>
+            
+            <%= f.label :level %>
+            <%= f.text_field :level, required: true, :placeholder => "あなたのスキーレベルを書いてね！(例:プルークボーゲンはできます)", class: "form-control" %>
+            
+            <%= f.label :introduction %>
+            <%= f.text_field :introduction, required: true, :placeholder => "あなたの自己紹介文を書いてね！", class: "form-control" %>
+            
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+            
+        <% end %>
+    </div>
+</div>

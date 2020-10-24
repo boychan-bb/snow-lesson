@@ -1,8 +1,18 @@
 <div class="col-md-6 col-md-offset-3 well">
     
     <h2>自己紹介を充実させて自分をアピールしよう！</h2>
-        <%= link_to "自己紹介文作成、編集", "/introduction/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
-        <%= link_to "ジャンル登録、追加", "/genre/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
+        <% if current_instructor.introduction.blank? %>
+            <%= link_to "自己紹介文作成", "/introduction/new", method: :get, class: "btn btn-primary" %>
+        <% else %>
+            <%= link_to "自己紹介文編集", "/introduction/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
+        <% end %>
+        
+        <% if current_instructor.genres.blank? %>     <!--instructorはhas_many :genresなので、genresの複数形で取得する-->
+            <%= link_to "ジャンル登録", "/genre/new", method: :get, class: "btn btn-primary" %>
+        <% else %>
+            <%= link_to "ジャンル編集", "/genre/#{current_instructor.id}/edit", method: :get, class: "post btn btn-primary" %>
+        <% end %>
+        
         <%= link_to "マイページ", "/instructors/#{current_instructor.id}", method: :get, class: "post btn btn-primary" %>
         <%= link_to "レッスン可能日設定", booking_new_path, method: :get, class: "btn btn-primary" %>
         <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, class: "post btn btn-primary" %>

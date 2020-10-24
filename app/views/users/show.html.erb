@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="well text-center">
+        <h2 class="text-center"><%= @user.name %>さんのマイページ</h2>
+        <p>レベル：<%= @user.level %></p>
+        <p>自己紹介文：<%= @user.introduction %></p>
+        <% if user_signed_in? && !instrucotr_signed_in? %>
+            <%= link_to "レベル、自己紹介文登録", "/users/#{@user.id}/edit", method: :get, class: "btn btn-primary" %> 
+        <% end %>
+    </div>
+</div>

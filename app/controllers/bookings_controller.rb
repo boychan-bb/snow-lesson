@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
     
     
     def index
-        @bookings = Booking.where(params[:id])      #findではなくwhereにしないと each文で取り出せない(配列にして渡す)
+        @bookings = Booking.where(instructor_id: params[:id])      #findではなくwhereにしないと each文で取り出せない(配列にして渡す)
+        #instructor_idと送られてきたidが等しい物を@bookingsに入れる。そうすることで、そのレッスンを設定したインストラクターのレッスンを取り出せる
     end
     
     def show
@@ -29,6 +30,6 @@ class BookingsController < ApplicationController
     
         private
             def booking_params
-                params.require(:booking).permit(:course, :lesson_time, :how_many, :howlong, :fee)
+                params.require(:booking).permit(:course, :lesson_time, :how_many, :how_long, :fee)
             end
 end

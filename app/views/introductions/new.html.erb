@@ -1,10 +1,17 @@
-<%= form_with model: @introduction, url: introduction_path do |form| %>
-    <h3>
-        自己紹介文を作成しよう！
-    </h3>
-    <%= @current_user %>
-    <%= form.text_area :introduction, placeholder: "自己紹介文入力" %>
-    <%= form.text_field :image, placeholder: "あなたをアピールする写真" %>
-    
-    <%= form.submit "送信" %>
-<% end %>
+<h2 class="text-center">自己紹介文を作成しよう！</h2>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(:introduction, url: "/introduction/#{current_instructor.id}", html: {method: "patch"}) do |f| %>
+            
+            <%= f.label :introduction %>
+            <%= f.text_field :introduction, required: true, :placeholder => "自己紹介文を入力", class: "form-control" %>
+            
+            <%= f.label :image %>
+            <%= f.text_field :image, :placeholder => "あなたをアピールする写真を挿入", class: "form-control" %>
+            
+            <%= f.submit "登録する", class: "btn btn-primary" %>
+            
+        <% end %>
+    </div>
+</div>

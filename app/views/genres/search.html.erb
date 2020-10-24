@@ -2,18 +2,19 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <% if @genres.present? %>
-            <% @genres.each do |genre| %>
-                <div class="well">
-                    <p>インストラクター名：<%= link_to "#{genre.instructor.name}", "/instructors/#{genre.instructor_id}", method: :get %></p>
-                        <p>ジャンル：<%= genre.genre %></p>
-                    <% if user_signed_in? && !instructor_signed_in? %>
-                        <p><%= link_to "#{genre.instructor.name}のレッスン一覧", "/user_booking/#{genre.instructor_id}", class: "btn btn-primary", method: :get %></p>
-                    <% end %>
+                <% @genres.each do |genre| %>
+                    <div class="well">
+                        <p>インストラクター名：<%= link_to "#{genre.instructor.name}", "/instructors/#{genre.instructor_id}", method: :get %></p>
+                            <p>ジャンル：<%= genre.genre %></p>
+                        <% if user_signed_in? && !instructor_signed_in? %>
+                            <p><%= link_to "#{genre.instructor.name}のレッスン一覧", "/user_booking/#{genre.instructor_id}", class: "btn btn-primary", method: :get %></p>
+                        <% end %>
+                    </div>
                 <% end %>
                     <% else %>
                         <p>検索結果がありません</p>
-                <% end %>
-                </div>
+            <% end %>
+                    
         </div>
     </div>
 </div>

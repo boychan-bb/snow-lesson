@@ -13,6 +13,8 @@ class InstructorsController < ApplicationController
     
     def show
         @instructor = Instructor.find(params[:id])
+        @booking = Booking.find_by(instructor_id: params[:id])  #find_byでid以外の条件で検索する(instructor_id)
+        #binding.pry
     end
     
         private

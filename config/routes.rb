@@ -14,17 +14,28 @@ Rails.application.routes.draw do
   #静的page routes
   
   #インストラクター自己紹介文作成用routes
+  get "/introduction/new" => "introductions#new"
+  post "/introduction/:id" => "introductions#create"
   get "/introduction/:id/edit" => "introductions#edit"
   patch "/introduction/:id" => "introductions#update"
   #get "/introduction/new" => "introductions#new"
   #post "/introduction" => "introductions#create"
   #インストラクター用自己紹介更新用routes
   
-  #ジャンル検索用のルーティング
+  #userマイページルーティング
+  get "users/:id" => "users#show"
+  get "/users/:id/edit" => "users#edit"
+  patch "/users/:id" => "users#update"
+  #userマイページルーティング
+  
+  #ジャンル登録、編集用ルーティング
+  get "/genre/new" => "genres#new"
+  post "/genre" => "genres#create"
   get "/genre/:id/edit" => "genres#edit"
   patch "/genre/:id" => "genres#update"
-  #get "/genre/new" => "genres#new"
-  #post "/genre" => "genres#create"
+  #ジャンル登録、編集用ルーティング
+  
+  #ジャンル検索用のルーティング
   get "/genre/search" => "genres#search"
   #ジャンル検索用のルーティング
   
