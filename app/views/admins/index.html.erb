@@ -1,0 +1,23 @@
+<div class="row">
+    <h2>登録インストラクター一覧</h2>
+        <% @instructor.each do |instructor| %>
+            <div class="col-md-4 well">
+                <p>登録インストラクター名：<%= instructor.name %></p>
+                <%= link_to "削除", "/instructor/#{instructor.id}", method: :delete, class: "btn btn-primary" %>
+            </div>
+        <% end %>
+</div>
+        
+<div class="row">
+    <h2>登録ユーザー一覧</h2>
+        <% @users.each do |user| %>
+                <% if user.try(:admin?) %>
+                <% else %>
+                    <div class="col-md-4 well">
+                        <p>登録ユーザー名：<%= user.name %></p></br>
+                        <%= link_to "削除", "/user/#{user.id}", method: :delete, class:"btn btn-primary" %>
+                    </div>
+                <% end %>
+        <% end %>
+</div>
+        

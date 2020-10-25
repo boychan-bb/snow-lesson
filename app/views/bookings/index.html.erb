@@ -3,8 +3,8 @@
             
             <% @bookings.each_with_index do |booking, i| %>     <!--each_with_indexで番号管理-->
                 <div class="col-md-4 well">     <!-- col-md-4で一列に３つを配置-->
-                    <h3>あなたのレッスン設定日<%= i+1 %></h3>
-                    <p>レッスン日時：<%= booking.lesson_time.to_s(:datetime_jp) %></p>
+                    <h3>あなたのレッスン設定日<%= i+1 %></h3>   <!--iはdefaultで0なので+1する-->
+                    <p>レッスン日時：<%= booking.lesson_time.to_s(:datetime_jp) %></p>  <!--to_s(:datetime_jp)で日本時間変換-->
                     <p>レッスン時間：<%= booking.how_long %>時間</p>
                     <p>レッスン最大人数：<%= booking.how_many %>人</p>
                     <p>レッスン料金：<%= booking.fee %>円</p>
@@ -12,7 +12,9 @@
                     <%= link_to "このレッスンの詳細", "/booking/show/#{booking.id}", class: "btn btn-primary" %>     <!--booking.idを送って予約のidを送る-->
                 </div>
             <% end %>
-            
+    </div>
+</div>
+
             <%# lesson_count = 1 %>      <!--ローカル変数day_countでレッスン設定日のカウントする-->
                 <%# @bookings.each do |booking| %>
                     <!--<div class="col-md-4 well">     col-md-4で一列に３つを配置
@@ -26,5 +28,3 @@
                     </div>
                     <%# lesson_count += 1 %>     lesson_count+1でレッスンの設定回数分を表示するようにする-->
                 <%# end %>
-    </div>
-</div>

@@ -29,6 +29,12 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update"
   #userマイページルーティング
   
+  #管理者用ルーティング
+  get "/admins" => "admins#index"
+  delete "/instructor/:id" => "instructors#destroy"
+  delete "/user/:id" => "users#destroy"
+  #管理者用ルーティング
+  
   #ジャンル登録、編集用ルーティング
   get "/genre/new" => "genres#new"
   post "/genre" => "genres#create"

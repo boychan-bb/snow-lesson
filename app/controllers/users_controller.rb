@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    user = User.find(params[:id])   #管理者adminだけが削除をできるようにする。
+    user.destroy if current_user.admin?   #管理者adminがログイン状態の時のみuserを削除する
+    
+    user_bookings = UserBooking.where(booking_id: params[:id])   #user_bookingに
+    bookings = Booking.all
+    
+    
+    flash[:success] = "User deleted"
+    redirect_to "/"
+  end
+  
     private 
     def user_params
       params.require(:user).permit(:name, :level, :introduction)

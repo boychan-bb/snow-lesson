@@ -1,4 +1,10 @@
 <div class="col-md-6 col-md-offset-3 well">
-    <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn btn-primary" %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post btn btn-primary" %>
+    <% if current_user.try(:admin?) %>     <!--ログイン中userが管理者の場合の条件分岐-->
+        <h2 class="text-center">ここは管理者画面です。</h2>
+        <%= link_to "管理画面へ", "/admin", method: :get, class: "btn btn-primary" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post btn btn-primary" %>
+    <% else %>
+        <%= link_to "マイページ", "/users/#{current_user.id}", method: :get, class: "btn btn-primary" %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "post btn btn-primary" %>
+    <% end %>
 </div>
